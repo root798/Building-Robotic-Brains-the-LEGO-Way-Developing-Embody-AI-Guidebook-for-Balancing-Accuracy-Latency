@@ -1,4 +1,4 @@
-# scenariofintune-bdd20k
+# scenariofintune
 
 # BDD20K-FT – Fine-Tuned Detection Models for the BDD100K Dataset
 A lightweight model zoo and training recipe collection that push the accuracy of classic and modern object-detectors on the **BDD100K** driving-scene benchmark by fine-tuning them on a curated, domain-specific split.
@@ -84,7 +84,8 @@ Sample frames are dominated by **urban U.S. traffic**, but we keep the long-tail
 | bdd10k_ft_centernet_r18_dcn| 0.087 | 0.093 | 0.078 | 0.108 | 0.106 | 0.096 | 0.090 | 0.076 | 0.073 | 0.085 | 0.089 | 0.080 | 0.092 | 0.094 | 0.083 | 0.104 | 0.092 | 0.085 | 0.101 | 0.093 | **0.090** |
 
 
-## WAID dataset
+
+# WAID dataset
 Below are fintuned model performance on WAID dataset:
 
 ## WAID Models Summary (↑ = best)
