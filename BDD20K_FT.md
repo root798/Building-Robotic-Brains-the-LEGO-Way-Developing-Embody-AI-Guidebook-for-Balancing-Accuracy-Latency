@@ -165,24 +165,3 @@ For datasets used in the fintuning and scenario generation, these are the corres
   year={2020}
 }
 ```
-```bibtex
-@article{mou2023waid,
-  title={WAID: A Large-Scale Dataset for Wildlife Detection with Drones},
-  author={Mou, Chao and Liu, Tengfei and Zhu, Chengcheng and Cui, Xiaohui},
-  journal={Applied Sciences},
-  volume={13},
-  number={18},
-  pages={10397},
-  year={2023},
-  publisher={MDPI},
-  doi={10.3390/app131810397}
-}
-```
-```bibtex
-@inproceedings{varga2022seadronessee,
-title={Seadronessee: A maritime benchmark for detecting humans in open water},
-author={Varga, Leon Amadeus and Kiefer, Benjamin and Messmer, Martin and Zell, Andreas},
-booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
-pages={2260--2270},
-year={2022} }
-```
