@@ -60,7 +60,7 @@ Below are fintuned model performance on WAID dataset:
 **Note**: Bold values indicate the best performance in each metric category among WAID models.
 
 ## 3. Citation
-For datasets used in the fintuning and scenario generation, these are the corresponding resources:
+For dataset used in the fintuning and scenario generation, below is the corresponding resource:
 
 ```bibtex
 @article{mou2023waid,
