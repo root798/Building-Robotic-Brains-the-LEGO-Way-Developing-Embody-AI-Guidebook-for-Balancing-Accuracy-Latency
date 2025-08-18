@@ -87,7 +87,7 @@ Sample frames are dominated by **urban U.S. traffic**, but we keep the long-tail
 
 #  WAID_FT: Fine-Tuned Object Detection Models for the Wildlife Aerial Images from Drone (WAID) Dataset
 
-## 1. WAID Dataset
+## 1. Dataset
 
 | Split        | Images | Annotation source | Notes                                |
 |--------------|-------:|-------------------|--------------------------------------|
@@ -147,7 +147,7 @@ Below are fintuned model performance on WAID dataset:
 **Note**: Bold values indicate the best performance in each metric category among WAID models.
 
 # SeaDronesSee Dataset
-## 1. WAID Dataset
+## 1. Dataset
 | Split        | Images | Annotation source | Notes                                |
 |--------------|-------:|-------------------|--------------------------------------|
 | **Train**    | 8.9 k  | SeaDronesSee v2   | Maritime SAR aerial images           |
@@ -167,6 +167,7 @@ Below are fintuned model performance on WAID dataset:
 
 The SeaDronesSee dataset is a maritime benchmark specifically designed for Search and Rescue (SAR) missions, focusing on detecting humans and objects in open water from UAV perspectives. The dataset presents unique challenges for object detection in maritime environments, with the best performing models currently achieving only 36% mAP compared to 60%+ on COCO, highlighting the difficulty of this domain. The dataset includes comprehensive metadata for altitude, viewing angles, and other flight parameters for most frames.
 
+## 2. Models Zoo (↑ = best)
 | Model | bbox_mAP | bbox_mAP_50 | bbox_mAP_75 | bbox_mAP_s | bbox_mAP_m | bbox_mAP_l |
 |:------|:--------:|:-----------:|:-----------:|:----------:|:----------:|:----------:|
 
