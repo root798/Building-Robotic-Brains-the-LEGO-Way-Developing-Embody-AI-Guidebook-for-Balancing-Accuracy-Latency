@@ -59,3 +59,19 @@ Below are fintuned model performance on WAID dataset:
 
 **Note**: Bold values indicate the best performance in each metric category among WAID models.
 
+## 3. Citation
+For datasets used in the fintuning and scenario generation, these are the corresponding resources:
+
+```bibtex
+@article{mou2023waid,
+  title={WAID: A Large-Scale Dataset for Wildlife Detection with Drones},
+  author={Mou, Chao and Liu, Tengfei and Zhu, Chengcheng and Cui, Xiaohui},
+  journal={Applied Sciences},
+  volume={13},
+  number={18},
+  pages={10397},
+  year={2023},
+  publisher={MDPI},
+  doi={10.3390/app131810397}
+}
+```
