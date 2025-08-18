@@ -22,3 +22,15 @@ The SeaDronesSee dataset is a maritime benchmark specifically designed for Searc
 ## 2. Models Zoo (↑ = best)
 | Model | bbox_mAP | bbox_mAP_50 | bbox_mAP_75 | bbox_mAP_s | bbox_mAP_m | bbox_mAP_l |
 |:------|:--------:|:-----------:|:-----------:|:----------:|:----------:|:----------:|
+
+## 3. Citation
+For dataset used in the fintuning and scenario generation, below is the corresponding resource:
+
+```bibtex
+@inproceedings{varga2022seadronessee,
+title={Seadronessee: A maritime benchmark for detecting humans in open water},
+author={Varga, Leon Amadeus and Kiefer, Benjamin and Messmer, Martin and Zell, Andreas},
+booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+pages={2260--2270},
+year={2022} }
+```
