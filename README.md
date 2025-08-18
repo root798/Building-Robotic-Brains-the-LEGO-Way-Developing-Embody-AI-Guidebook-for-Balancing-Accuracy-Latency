@@ -1,5 +1,15 @@
 # scenariofintune
 
+## Fine-Tuned Object Detection Models Across Multiple Scenarios
+
+This repository provides fine-tuned models across diverse domains and challenging scenarios:
+
+| Dataset | Domain | Focus | Link |
+|---------|--------|-------|------|
+| **BDD100K** | Autonomous Driving | Urban traffic, corner cases | [→ BDD20K_FT](#bdd20k_ft-fine-tuned-object-detection-models-for-the-bdd100k-dataset) |
+| **WAID** | Wildlife Monitoring | Aerial small object detection | [→ WAID_FT](#waid_ft-fine-tuned-object-detection-models-for-the-wildlife-aerial-images-from-drone-waid-dataset) |
+| **SeaDronesSee** | Search & Rescue | Maritime small object detection | [→ SeaDronesSee](#seadronessee-dataset) |
+
 # BDD20K_FT: Fine-Tuned Object Detection Models for the BDD100K Dataset
 A lightweight model zoo and training recipe collection that push the accuracy of classic and modern object-detectors on the **BDD100K** driving-scene benchmark by fine-tuning them on a curated, domain-specific split.
 
@@ -263,4 +273,12 @@ For datasets used in the fintuning and scenario generation, these are the corres
   publisher={MDPI},
   doi={10.3390/app131810397}
 }
+```
+```bibtex
+@inproceedings{varga2022seadronessee,
+title={Seadronessee: A maritime benchmark for detecting humans in open water},
+author={Varga, Leon Amadeus and Kiefer, Benjamin and Messmer, Martin and Zell, Andreas},
+booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+pages={2260--2270},
+year={2022} }
 ```
