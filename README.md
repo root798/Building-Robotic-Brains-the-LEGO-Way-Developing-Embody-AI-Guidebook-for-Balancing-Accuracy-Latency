@@ -1,6 +1,6 @@
 # scenariofintune
 
-# BDD20K-FT – Fine-Tuned Detection Models for the BDD100K Dataset
+# BDD20K: Fine-Tuned Object Detection Models for the BDD100K Dataset
 A lightweight model zoo and training recipe collection that push the accuracy of classic and modern object-detectors on the **BDD100K** driving-scene benchmark by fine-tuning them on a curated, domain-specific split.
 
 
@@ -85,7 +85,29 @@ Sample frames are dominated by **urban U.S. traffic**, but we keep the long-tail
 
 
 
-# WAID dataset
+# Wildlife Aerial Images from Drone /(WAID\): Fine-Tuned Object Detection Models for the WAID Dataset
+
+## WAID Dataset
+
+| Split        | Images | Annotation source | Notes                                |
+|--------------|-------:|-------------------|--------------------------------------|
+| **Train**    | 11.1 k | WAID              | Wildlife aerial images               |
+| **Val**      | 2.1 k  | WAID              | Used for all numbers in the table    |
+| **Test**     | 1.2 k  | WAID              | Used for all numbers in the table    |
+
+| **Attribute**        | **Details**                                           |
+|----------------------|-------------------------------------------------------|
+| **Total Images**     | 14,375 UAV aerial images                             |
+| **Species (6)**      | Sheep, Cattle, Seals, Camels, Kiang, Zebras          |
+| **Habitats**         | Deserts, Grasslands, Sandy beaches                   |
+| **Conditions**       | Various weather, times of day, altitudes             |
+| **Annotation**       | Box-level labeling with species classification       |
+| **Split Ratio**      | 70% Train / 20% Val / 10% Test                       |
+| **Focus**            | Small object detection in aerial imagery             |
+| **Source**           | https://github.com/xiaohuicui/WAID                   |
+
+The WAID dataset is a large-scale, multi-class dataset specifically designed for wildlife detection in UAV aerial imagery. The dataset is particularly challenging for small object detection tasks, as wildlife subjects often appear as small targets in aerial images captured at various altitudes and environmental conditions.
+
 Below are fintuned model performance on WAID dataset:
 
 ## WAID Models Summary (↑ = best)
@@ -198,9 +220,26 @@ Rendered examples live under `assets/vis/`.
 ---
 
 ## 6. Citation
-
+For datasets used in the fintuning and scenario generation, these are the corresponding resources:
 ```bibtex
-
+@inproceedings{yu2020bdd100k,
+  title={BDD100K: A diverse driving dataset for heterogeneous multitask learning},
+  author={Yu, Fisher and Chen, Haofeng and Wang, Xin and Xian, Wenqi and Chen, Yingying and Liu, Fangchen and Madhavan, Vashisht and Darrell, Trevor},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={2636--2645},
+  year={2020}
+}
 ```
-
-
+```bibtex
+@article{mou2023waid,
+  title={WAID: A Large-Scale Dataset for Wildlife Detection with Drones},
+  author={Mou, Chao and Liu, Tengfei and Zhu, Chengcheng and Cui, Xiaohui},
+  journal={Applied Sciences},
+  volume={13},
+  number={18},
+  pages={10397},
+  year={2023},
+  publisher={MDPI},
+  doi={10.3390/app131810397}
+}
+```
