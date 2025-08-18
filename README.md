@@ -87,7 +87,7 @@ Sample frames are dominated by **urban U.S. traffic**, but we keep the long-tail
 
 #  WAID_FT: Fine-Tuned Object Detection Models for the Wildlife Aerial Images from Drone (WAID) Dataset
 
-## WAID Dataset
+## 1. WAID Dataset
 
 | Split        | Images | Annotation source | Notes                                |
 |--------------|-------:|-------------------|--------------------------------------|
@@ -107,7 +107,7 @@ Sample frames are dominated by **urban U.S. traffic**, but we keep the long-tail
 
 The WAID dataset is a large-scale, multi-class dataset specifically designed for wildlife detection in UAV aerial imagery. The dataset is particularly challenging for small object detection tasks, as wildlife subjects often appear as small targets in aerial images captured at various altitudes and environmental conditions.
 
-## WAID Models Summary (↑ = best)
+## 2. Models Zoo (↑ = best)
 Below are fintuned model performance on WAID dataset:
 
 | Model | bbox_mAP | bbox_mAP_50 | bbox_mAP_75 | bbox_mAP_s | bbox_mAP_m | bbox_mAP_l |
