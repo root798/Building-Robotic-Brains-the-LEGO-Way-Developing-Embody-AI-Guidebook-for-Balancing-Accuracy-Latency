@@ -121,7 +121,7 @@ Below are fintuned model performance on WAID dataset:
 | waid_ft_efficientdet_d3 | 0.173 | 0.303 | 0.184 | 0.094 | 0.218 | 0.196 |
 | waid_ft_centernet_r18_dcn | 0.111 | 0.284 | 0.066 | 0.044 | 0.147 | 0.154 |
 | waid_ft_reppoints_r50 | 0.014 | 0.041 | 0.006 | 0.006 | 0.026 | 0.000 |
-
+| waid10k_ft_freeanchor_r50_smallobj_fp32   |      0.135 |         0.293 |         0.101 |        0.116 |        0.152 |        0.183 |
 
 **Note**: Bold values indicate the best performance in each metric category among WAID models.
 
