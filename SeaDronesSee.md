@@ -22,6 +22,13 @@ The SeaDronesSee dataset is a maritime benchmark specifically designed for Searc
 ## 2. Models Zoo (↑ = best)
 | Model | bbox_mAP | bbox_mAP_50 | bbox_mAP_75 | bbox_mAP_s | bbox_mAP_m | bbox_mAP_l |
 |:------|:--------:|:-----------:|:-----------:|:----------:|:----------:|:----------:|
+| seadronessee10k_ft_ddq_detr4scale_r50 | 0.527 | 0.878 | 0.527 | 0.477 | 0.533 | 0.706 |
+| seadronessee10k_ft_atss_r50 | 0.444 | 0.751 | 0.451 | 0.360 | 0.490 | 0.644 |
+| seadronessee10k_cascade_rcnn_r50 | 0.400 | 0.626 | 0.435 | 0.249 | 0.483 | 0.669 |
+| seadronessee20k_ft_conditional_detr_r50 | 0.367 | 0.709 | 0.345 | 0.255 | 0.390 | 0.613 |
+| seadronessee10k_ft_dynamic_rcnn_r50 | 0.339 | 0.546 | 0.360 | 0.101 | 0.410 | 0.593 |
+| seadronessee20k_ft_detr_r50 | 0.305 | 0.632 | 0.247 | 0.163 | 0.305 | 0.541 |
+
 
 ## 3. Citation
 For dataset used in the fintuning and scenario generation, below is the corresponding resource:
