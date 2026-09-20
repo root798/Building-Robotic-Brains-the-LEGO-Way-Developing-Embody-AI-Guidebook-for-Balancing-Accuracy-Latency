@@ -1,4 +1,8 @@
 # SeaDronesSee Dataset
+> Historical model table: these values are not results of the current completion
+> campaign. See [current training status](docs/training-status.md) for the dated
+> run inventory and [reproduction](docs/reproduction.md) for published recipes.
+
 ## 1. Dataset
 | Split        | Images | Annotation source | Notes                                |
 |--------------|-------:|-------------------|--------------------------------------|

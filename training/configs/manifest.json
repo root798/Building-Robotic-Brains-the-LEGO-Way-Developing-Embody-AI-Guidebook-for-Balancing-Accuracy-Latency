@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "scope": "20 formal queue recipes and one distinct numerical repair candidate",
+  "exporter": "tools/export_training_configs.py",
+  "queue_source_filename": "run_finetune.sh",
+  "queue_source_sha256": "b8ddffc480a18727631742661137462455112e66c35347bfdba443d26ad6ada9",
+  "formal_job_count": 20,
+  "repair_candidate_count": 1,
+  "checkpoints_included": false,
+  "data_included": false,
+  "adaptations": [
+    "Dataset storage prefix becomes relative data/; suffixes are unchanged.",
+    "Local checkpoint references become checkpoints/<basename>.",
+    "work_dir becomes work_dirs/<model>.",
+    "Absolute provenance values retain only their basename.",
+    "Repair module import becomes training.reppoints_numerics.",
+    "All other configuration values, including historical transforms, are retained."
+  ],
+  "configs": [
+    {
+      "model": "mobility10k_ft_fcos_r50",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_fcos_r50.py",
+      "source_sha256": "aa80e133953d849f561109f9c24ff6e1a384e8ff61aad4e8262c81cd949bf4ff",
+      "published_filename": "mobility10k_ft_fcos_r50.py",
+      "published_sha256": "2dbebbbcfdbc17be4e9310b7e02177dcf7609ce0f6aa6a600ce460749bd273cc",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/fcos_r50_caffe_fpn_gn-head_1x_coco_20200513_110516-4f8df263.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_atss_r50",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_atss_r50.py",
+      "source_sha256": "756fe6b11e3837bbaa5cd13bce77d49e41ff0a999de67359914c397dd7ddaa85",
+      "published_filename": "mobility10k_ft_atss_r50.py",
+      "published_sha256": "484300998631be28eebec171f5a630deab57dec9b7ea781ce4da2399a5fb1d49",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/atss_r50_fpn_1x_coco_20200209-985f7bd0.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_dynamic_rcnn_r50",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_dynamic_rcnn_r50.py",
+      "source_sha256": "1139176e04c1c6ac47a812c2133958210d9bc457e5545fe59e3452d77c1629c2",
+      "published_filename": "mobility10k_ft_dynamic_rcnn_r50.py",
+      "published_sha256": "04b065d8bb5523ba8ceb518b1ed42b7f82d0ba955fe176dc3d400e9af8e354aa",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/dynamic_rcnn_r50_fpn_1x-62a3f276.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_rtmdet_tiny",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_rtmdet_tiny.py",
+      "source_sha256": "597cf2d65bc7dca2e5902bb17d3f48770e05be1af1c487a49af72e2ceab362b3",
+      "published_filename": "mobility10k_ft_rtmdet_tiny.py",
+      "published_sha256": "3e773b99271b0b0da4594a863a84902f52046b8d50a6eeae8076c8fad97fb42a",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/cspnext-tiny_imagenet_600e.pth",
+        "checkpoints/rtmdet_tiny_8xb32-300e_coco_20221123_002059-9c5c33ef.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_yolof_r50",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_yolof_r50.py",
+      "source_sha256": "07eb6c2cd1ade198ff8186a4f3053e219839d993e0583e30346ec9fa99e30895",
+      "published_filename": "mobility10k_ft_yolof_r50.py",
+      "published_sha256": "b38c7661caa76bf0820cad7f4e2f58bc00e34cd51918153de2b485501cbb4157",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_ssd300",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_ssd300.py",
+      "source_sha256": "f20a063eef369fea7130843ca5b38116d563d5a0c7273e3c23d6ee19068a4c70",
+      "published_filename": "mobility10k_ft_ssd300.py",
+      "published_sha256": "8086ecfee4d8e96dcf93e3f476e8f363e2faa6bc2b71f9cb2a79845681c81311",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/ssd300_coco_20210803_015428-d231a06e.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_deformable_detr_r50",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_deformable_detr_r50.py",
+      "source_sha256": "925bc12316a17d5ca8c81b51ffff4a1085d24ab76b77bddde54756c8cca39ef7",
+      "published_filename": "mobility10k_ft_deformable_detr_r50.py",
+      "published_sha256": "c163a4f599ceecb8a3b7d043118394cbe033508fceb0c0ed3ad5c537fed90c10",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/deformable-detr_r50_16xb2-50e_coco_20221029_210934-6bc7d21b.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_mask_rcnn_swin_t",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_mask_rcnn_swin_t.py",
+      "source_sha256": "afc033df836f80226885f93ac6262f86f8b21acde94a5d42d7f825f5171b7dd5",
+      "published_filename": "mobility10k_ft_mask_rcnn_swin_t.py",
+      "published_sha256": "5713bf2e73ca21466d19c7d6ec21465c0ef10ae361ceed3548299f926da50455",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/mask_rcnn_swin-t-p4-w7_fpn_1x_coco_20210902_120937-9d6b7cfa.pth",
+        "checkpoints/swin_tiny_patch4_window7_224.pth"
+      ]
+    },
+    {
+      "model": "mobility10k_ft_diffusiondet_r50",
+      "domain": "mobility",
+      "role": "formal_queue",
+      "validation_split": "cma_val",
+      "source_filename": "mobility10k_ft_diffusiondet_r50.py",
+      "source_sha256": "9b90084ad6dd7faa97ac2887fdc4fee331faa441d975fbf54f69a3bd98a54b9c",
+      "published_filename": "mobility10k_ft_diffusiondet_r50.py",
+      "published_sha256": "d95d22eefa884d222be015268804f5e9f017efdaaa6f0e64740de80bda7ff916",
+      "custom_imports": [
+        "projects.DiffusionDet.diffusiondet"
+      ],
+      "checkpoint_files": [
+        "checkpoints/diffusiondet_r50_fpn_500-proposals_1-step_crop-ms-480-800-450k_coco_20230215_090925-7d6ed504.pth"
+      ]
+    },
+    {
+      "model": "seadronessee10k_ft_ssd300",
+      "domain": "seadronessee",
+      "role": "formal_queue",
+      "validation_split": "sds_val",
+      "source_filename": "seadronessee10k_ft_ssd300.py",
+      "source_sha256": "c7bf780aea4bff83b783defce217b4048e579ae3b321aea136a4826c59b115e0",
+      "published_filename": "seadronessee10k_ft_ssd300.py",
+      "published_sha256": "336dc35b9e47dd96efaf6f06fc82ca5731f64313f6510df7614887ef3d391493",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/ssd300_coco_20210803_015428-d231a06e.pth"
+      ]
+    },
+    {
+      "model": "seadronessee10k_ft_deformable_detr_refine_r50",
+      "domain": "seadronessee",
+      "role": "formal_queue",
+      "validation_split": "sds_val",
+      "source_filename": "seadronessee10k_ft_deformable_detr_refine_r50.py",
+      "source_sha256": "a108aed0481a65c8d861e897deb9a9f83796e35d2294fedd0e7c2d20500bec7c",
+      "published_filename": "seadronessee10k_ft_deformable_detr_refine_r50.py",
+      "published_sha256": "17081749b5a86ffedde0ad520f62f02d20484694ba2f9ed2aab1519714be9dd5",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/deformable-detr-refine_r50_16xb2-50e_coco_20221022_225303-844e0f93.pth"
+      ]
+    },
+    {
+      "model": "seadronessee10k_ft_vitdet_b",
+      "domain": "seadronessee",
+      "role": "formal_queue",
+      "validation_split": "sds_val",
+      "source_filename": "seadronessee10k_ft_vitdet_b.py",
+      "source_sha256": "80fd01de64822c46bf552cc2b2417283c0d476df32ed5f089c74fc8c561ebf6c",
+      "published_filename": "seadronessee10k_ft_vitdet_b.py",
+      "published_sha256": "493c6dbebd294bb58604bdb909c0104494304b8811869e0fd18ac1eab29f557a",
+      "custom_imports": [
+        "projects.ViTDet.vitdet"
+      ],
+      "checkpoint_files": [
+        "checkpoints/vitdet_mask-rcnn_vit-b-mae_lsj-100e_20230328_153519-e15fe294.pth"
+      ]
+    },
+    {
+      "model": "waid10k_ft_deformable_detr_refine_r50",
+      "domain": "waid",
+      "role": "formal_queue",
+      "validation_split": "waid_valid",
+      "source_filename": "waid10k_ft_deformable_detr_refine_r50.py",
+      "source_sha256": "11a9d3a0d97285536d0b60db6d5531d128128ae3f42c4b91339093215307a74a",
+      "published_filename": "waid10k_ft_deformable_detr_refine_r50.py",
+      "published_sha256": "108f3ae7f2d637f1935be9fe67e4fcc3d43856160f4f997dcf75396e94bfbc80",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/deformable-detr-refine_r50_16xb2-50e_coco_20221022_225303-844e0f93.pth"
+      ]
+    },
+    {
+      "model": "waid10k_ft_vitdet_b",
+      "domain": "waid",
+      "role": "formal_queue",
+      "validation_split": "waid_valid",
+      "source_filename": "waid10k_ft_vitdet_b.py",
+      "source_sha256": "7a25e9f3eb969f048f79d297c5910d24f9b394bf05c62b63f49d040dff1cd087",
+      "published_filename": "waid10k_ft_vitdet_b.py",
+      "published_sha256": "d5bff60b415b4e59ca010f45beb7a9fb942050b8db094199e88b425666eb299f",
+      "custom_imports": [
+        "projects.ViTDet.vitdet"
+      ],
+      "checkpoint_files": [
+        "checkpoints/vitdet_mask-rcnn_vit-b-mae_lsj-100e_20230328_153519-e15fe294.pth"
+      ]
+    },
+    {
+      "model": "bdd10k_ft_reppoints_r50_v2",
+      "domain": "bdd",
+      "role": "formal_queue",
+      "validation_split": "val",
+      "source_filename": "bdd10k_ft_reppoints_r50_v2.py",
+      "source_sha256": "bd1ce69bb6e9677a5692a95cfa6d76f27e7dc77515d08037f4be43dbe9dee3e8",
+      "published_filename": "bdd10k_ft_reppoints_r50_v2.py",
+      "published_sha256": "06052f256bccca620317a1d90de1d26fc77aa4f2ffe6d91f496176ebfb24041b",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/bbox_r50_grid_fpn_gn-neck+head_1x_coco_20200329_145916-0eedf8d1.pth"
+      ]
+    },
+    {
+      "model": "bdd10k_ft_efficientdet_d3_v2",
+      "domain": "bdd",
+      "role": "formal_queue",
+      "validation_split": "val",
+      "source_filename": "bdd10k_ft_efficientdet_d3_v2.py",
+      "source_sha256": "cc5da267ff6c0b14db172ab571bcd177c8c4d018e023bf2772e9aaa23302fa9a",
+      "published_filename": "bdd10k_ft_efficientdet_d3_v2.py",
+      "published_sha256": "897570eb766aaecfd4c2bc3415ec244149e885b24723c8e7d1acc3030ddc07f2",
+      "custom_imports": [
+        "projects.EfficientDet.efficientdet"
+      ],
+      "checkpoint_files": [
+        "checkpoints/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco_20230223_122457-e6f7a833.pth",
+        "checkpoints/efficientnet-b3_3rdparty_8xb32-aa-advprop_in1k_20220119-53b41118.pth"
+      ]
+    },
+    {
+      "model": "seadronessee10k_ft_reppoints_r50_v2",
+      "domain": "seadronessee",
+      "role": "formal_queue",
+      "validation_split": "sds_val",
+      "source_filename": "seadronessee10k_ft_reppoints_r50_v2.py",
+      "source_sha256": "a8d72728ce878b5687d9d6fd6c161437c184211cb68d632f474021ce298e84b2",
+      "published_filename": "seadronessee10k_ft_reppoints_r50_v2.py",
+      "published_sha256": "f04fa0e9af7dbf3cf727fa52ff1916ccdddc5bf7b462d592be726198c5cc3521",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/bbox_r50_grid_fpn_gn-neck+head_1x_coco_20200329_145916-0eedf8d1.pth"
+      ]
+    },
+    {
+      "model": "seadronessee10k_ft_freeanchor_r50_v2",
+      "domain": "seadronessee",
+      "role": "formal_queue",
+      "validation_split": "sds_val",
+      "source_filename": "seadronessee10k_ft_freeanchor_r50_v2.py",
+      "source_sha256": "506492ce23d0e14c47b8f8aad46250857c3af8893eaca29068433b95d2e1a839",
+      "published_filename": "seadronessee10k_ft_freeanchor_r50_v2.py",
+      "published_sha256": "31095f89677a6cfa21ecd10ab053b9c7b2058ef933756c617a0f72bd87c30840",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/retinanet_free_anchor_r50_fpn_1x_coco_20200130-0f67375f.pth"
+      ]
+    },
+    {
+      "model": "waid10k_ft_reppoints_r50_v2",
+      "domain": "waid",
+      "role": "formal_queue",
+      "validation_split": "waid_valid",
+      "source_filename": "waid10k_ft_reppoints_r50_v2.py",
+      "source_sha256": "a66cfdf518d8b08436f61ca6e9f5a7a379fa1907a69ba6d62f2c451f328a4594",
+      "published_filename": "waid10k_ft_reppoints_r50_v2.py",
+      "published_sha256": "eb26dccca07e974325016b5bf1814b5f7f6c8cffd6f130044cbb2920850c1337",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/bbox_r50_grid_fpn_gn-neck+head_1x_coco_20200329_145916-0eedf8d1.pth"
+      ]
+    },
+    {
+      "model": "waid10k_ft_freeanchor_r50_v2",
+      "domain": "waid",
+      "role": "formal_queue",
+      "validation_split": "waid_valid",
+      "source_filename": "waid10k_ft_freeanchor_r50_v2.py",
+      "source_sha256": "d17af74e4401c276033ae43300090dd19337d5965320122b3817110e5f6c7887",
+      "published_filename": "waid10k_ft_freeanchor_r50_v2.py",
+      "published_sha256": "d5063a0d964bba2b7e568c02166960422d6ccc6db527194e662aa42bc3d675c8",
+      "custom_imports": [],
+      "checkpoint_files": [
+        "checkpoints/retinanet_free_anchor_r50_fpn_1x_coco_20200130-0f67375f.pth"
+      ]
+    },
+    {
+      "model": "bdd10k_ft_reppoints_r50_v3",
+      "domain": "bdd",
+      "role": "repair_candidate",
+      "validation_split": "val",
+      "source_filename": "bdd10k_ft_reppoints_r50_v3.py",
+      "source_sha256": "b1eb806ef8668774666765d6b24744d8abf2ab200441ee196a8e59bd4b82ace5",
+      "published_filename": "bdd10k_ft_reppoints_r50_v3.py",
+      "published_sha256": "9bddbbe9c7cec6477b0456aa3f939d485b440d9039b9a4d389fb968b1ee30ef8",
+      "custom_imports": [
+        "training.reppoints_numerics"
+      ],
+      "checkpoint_files": []
+    }
+  ]
+}

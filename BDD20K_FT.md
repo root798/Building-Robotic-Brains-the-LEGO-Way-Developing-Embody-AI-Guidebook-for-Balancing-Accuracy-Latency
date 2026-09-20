@@ -1,4 +1,10 @@
 # BDD20K_FT: Fine-Tuned Object Detection Models for the BDD100K Dataset
+> Historical snapshot. The split descriptions, model tables, placeholder commands,
+> and download claims below predate the current training campaign and have not
+> been revalidated. They are retained for reference, not presented as current
+> results. Use [current training status](docs/training-status.md), including the
+> audited BDD split counts, and the [reproduction guide](docs/reproduction.md).
+
 A lightweight model zoo and training recipe collection that push the accuracy of classic and modern object-detectors on the **BDD100K** driving-scene benchmark by fine-tuning them on a curated, domain-specific split.
 
 
