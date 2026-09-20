@@ -1,173 +1,64 @@
-# BDD20K_FT: Fine-Tuned Object Detection Models for the BDD100K Dataset
-> Historical snapshot. The split descriptions, model tables, placeholder commands,
-> and download claims below predate the current training campaign and have not
-> been revalidated. They are retained for reference, not presented as current
-> results. Use [current training status](docs/training-status.md), including the
-> audited BDD split counts, and the [reproduction guide](docs/reproduction.md).
+# BDD100K-FT model zoo
 
-A lightweight model zoo and training recipe collection that push the accuracy of classic and modern object-detectors on the **BDD100K** driving-scene benchmark by fine-tuning them on a curated, domain-specific split.
+[All domains](README.md) · [CSV](model_zoo/results.csv) · [Protocol](docs/evaluation.md) · [Training](docs/training-status.md)
 
+Snapshot: 2026-09-20T17:04:05+00:00. AP values use a 0–100 scale.
 
----
+| Train images | Validation images | Classes | Architecture slots |
+| ---: | ---: | ---: | ---: |
+| 12,000 | 4,000 | 11 | 32 |
 
-## 1. Dataset
+Classes: `person`, `rider`, `car`, `bus`, `truck`, `bike`, `motor`, `traffic light`, `traffic sign`, `train`, `animal`.
 
-| Split        | Images | Annotation source | Notes                                |
-|--------------|-------:|-------------------|--------------------------------------|
-| **Train**    | 14 k   | BDD100K DET       | Coner Case train set                    |
-| **Val**      | 2 k   | BDD100K DET       | Used for all numbers in the table    |
-| **Test**     | 2 k   | BDD100K DET     | Used for all numbers in the table         |
+This is the project’s 11-class, 4,000-image validation split of BDD100K-FT.
 
-All classes follow the original 11-category BDD label set.  
-Sample frames are dominated by **urban U.S. traffic**, but we keep the long-tail corner-cases (rain, night, snow) to ensure robustness.
+## Models
 
----
+Each row links to its recipe. Evaluated checkpoint filenames and SHA-256 identities are in the [catalog](model_zoo/catalog.json). Weight downloads are not hosted in this repository.
 
-## 2. Model Zoo (↑ = best)
+| Model | AP | AP50 | AP75 | Status |
+| --- | ---: | ---: | ---: | --- |
+| [ATSS R50](model_zoo/configs/bdd/bdd10k_ft_atss_r50.py) | 37.11 | 62.00 | 37.56 | Evaluated |
+| [Cascade R-CNN R50](model_zoo/configs/bdd/bdd10k_ft_cascade_rcnn_r50.py) | 27.85 | 50.74 | 25.97 | Evaluated |
+| [CenterNet R18-DCN](model_zoo/configs/bdd/bdd10k_ft_centernet_r18_dcn.py) | 3.99 | 9.92 | 2.87 | Evaluated |
+| [Conditional DETR R50](model_zoo/configs/bdd/bdd20k_ft_conditional_detr_r50.py) | 22.57 | 45.31 | 19.36 | Evaluated |
+| [DDQ-DETR R50](model_zoo/configs/bdd/bdd10k_ft_ddq_detr4scale_r50.py) | 33.89 | 59.53 | 32.31 | Evaluated |
+| [Deformable DETR R50](model_zoo/configs/bdd/bdd10k_ft_deformable_detr_r50.py) | 27.83 | 52.30 | 25.53 | Evaluated |
+| [Deformable DETR Refine R50](model_zoo/configs/bdd/bdd10k_ft_deformable_detr_refine_r50.py) | 28.93 | 52.77 | 27.43 | Evaluated |
+| [DETR R50](model_zoo/configs/bdd/bdd20k_ft_detr_r50.py) | 18.19 | 37.40 | 15.21 | Evaluated |
+| [DiffusionDet R50](model_zoo/configs/bdd/bdd10k_ft_diffusiondet_r50.py) | 29.44 | 55.35 | 26.74 | Checkpoint unavailable |
+| [DINO Swin-L](model_zoo/configs/bdd/bdd10k_ft_dino_swin_l.py) | 32.16 | 59.07 | 29.70 | Evaluated |
+| [Dynamic R-CNN R50](model_zoo/configs/bdd/bdd10k_ft_dynamic_rcnn_r50.py) | 25.56 | 46.41 | 24.31 | Evaluated |
+| [EfficientDet-D3 v2](model_zoo/configs/bdd/bdd10k_ft_efficientdet_d3_v2.py) | 19.41 | 37.73 | 16.86 | Evaluated |
+| [FCOS R50](model_zoo/configs/bdd/bdd10k_ft_fcos_r50.py) | 34.33 | 58.95 | 33.62 | Evaluated |
+| [Faster R-CNN R50-FPN](model_zoo/configs/bdd/bdd10k_ft_frcnn_r50_fpn.py) | 32.07 | 57.71 | 30.97 | Evaluated |
+| [FreeAnchor R50](model_zoo/configs/bdd/bdd10k_ft_freeanchor_r50.py) | 22.37 | 42.28 | 20.42 | Evaluated |
+| [Grid R-CNN R50](model_zoo/configs/bdd/bdd20k_ft_grid_rcnn_r50.py) | 28.96 | 52.15 | 27.88 | Evaluated |
+| [Mask R-CNN Swin-T](model_zoo/configs/bdd/bdd10k_ft_mask_rcnn_swin_t.py) | 21.95 | 45.05 | 18.20 | Evaluated |
+| [NAS-FCOS R50](model_zoo/configs/bdd/bdd20k_ft_nas_fcos_r50.py) | 27.14 | 50.64 | 24.61 | Evaluated |
+| [PAA R50](model_zoo/configs/bdd/bdd20k_ft_paa_r50.py) | 29.02 | 52.11 | 27.41 | Evaluated |
+| [RepPoints R50 v2](model_zoo/configs/bdd/bdd10k_ft_reppoints_r50_v2.py) | 17.88 | 35.05 | 15.75 | NaN in training |
+| [RetinaNet EfficientNet-B3](model_zoo/configs/bdd/bdd10k_ft_retinanet_effb3.py) | 23.79 | 43.73 | 22.25 | Evaluated |
+| [RetinaNet PVT-T](model_zoo/configs/bdd/bdd10k_ft_retinanet_pvtt.py) | 24.45 | 45.98 | 22.26 | Evaluated |
+| [RetinaNet R50](model_zoo/configs/bdd/bdd10k_ft_retinanet_r50.py) | 34.63 | 59.09 | 34.43 | Evaluated |
+| [RTMDet-Tiny](model_zoo/configs/bdd/bdd10k_ft_rtmdet_tiny.py) | 26.91 | 47.62 | 25.44 | Evaluated |
+| [Sparse R-CNN R50](model_zoo/configs/bdd/bdd10k_ft_sparse_rcnn_r50.py) | 8.96 | 19.11 | 7.08 | Evaluated |
+| [SSD300](model_zoo/configs/bdd/bdd10k_ft_ssd300.py) | 6.77 | 13.82 | 6.06 | Evaluated |
+| [TOOD R50](model_zoo/configs/bdd/bdd20k_ft_tood_r50.py) | 29.97 | 53.41 | 28.16 | Evaluated; class-name mapping |
+| [TridentNet R50](model_zoo/configs/bdd/bdd20k_ft_tridentnet_r50.py) | 27.83 | 51.67 | 25.29 | Evaluated |
+| [VarifocalNet R50](model_zoo/configs/bdd/bdd10k_ft_varifocalnet_r50.py) | 29.02 | 52.30 | 27.25 | Evaluated |
+| [ViTDet-B](model_zoo/configs/bdd/bdd10k_ft_vitdet_b.py) | 31.90 | 56.01 | 30.88 | Evaluated |
+| [YOLOF R50](model_zoo/configs/bdd/bdd10k_ft_yolof_r50.py) | 29.91 | 50.99 | 29.75 | Evaluated |
+| [YOLOv3 Darknet-53 (320)](model_zoo/configs/bdd/bdd10k_ft_yolov3_320.py) | 8.53 | 20.93 | 6.16 | Evaluated |
 
-| Model                              | bbox_mAP | bbox_mAP_50 | bbox_mAP_75 | bbox_mAP_s | bbox_mAP_m | bbox_mAP_l |
-|:-----------------------------------|:--------:|:-----------:|:-----------:|:----------:|:----------:|:----------:|
-| bdd20k_ft_ddq_detr4scale_r50       | 0.351 | 0.605 | 0.332 | 0.160 | 0.398 | 0.577 |
-| bdd20k_ft_dino_swin_l              | 0.342 | 0.606 | 0.326 | 0.158 | 0.388 | 0.549 |
-| bdd20k_ft_frcnn_r50_fpn            | 0.320 | 0.576 | 0.307 | 0.144 | 0.383 | 0.512 |
-| bdd20k_ft_atss_r50                 | 0.313 | 0.550 | 0.299 | 0.140 | 0.362 | 0.540 |
-| bdd20k_ft_tood_r50        | 0.312 | 0.556 | 0.296 | 0.135 | 0.367 | 0.547 |
-| bdd20k_ft_diffusiondet_r50         | 0.304 | 0.561 | 0.275 | 0.146 | 0.351 | 0.496 |
-| bdd20k_ft_varifocalnet_r50 | 0.305 | 0.548 | 0.289 | 0.128 | 0.360 | 0.538 |
-| bdd20k_ft_nas_fcos_r50      | 0.301 | 0.544 | 0.285 | 0.130 | 0.358 | 0.538 |
-| bdd20k_ft_retinanet_r50            | 0.296 | 0.525 | 0.284 | 0.118 | 0.353 | 0.533 |
-| bdd20k_ft_conditional_detr_r50 | 0.297 | 0.538 | 0.279 | 0.120 | 0.350 | 0.529 |
-| bdd20k_ft_fcos_r50                 | 0.294 | 0.529 | 0.274 | 0.123 | 0.336 | 0.509 |
-| bdd20k_ft_grid_rcnn_r50     | 0.291 | 0.535 | 0.275 | 0.118 | 0.345 | 0.525 |
-| bdd20k_ft_deformable_detr_r50      | 0.290 | 0.528 | 0.268 | 0.109 | 0.335 | 0.483 |
-| bdd20k_ft_cascade_rcnn_r50         | 0.289 | 0.515 | 0.271 | 0.120 | 0.345 | 0.480 |
-| bdd20k_ft_tridentnet_r50    | 0.297 | 0.540 | 0.280 | 0.122 | 0.352 | 0.530 |
-| bdd20k_ft_paa_r50           | 0.299 | 0.540 | 0.282 | 0.125 | 0.353 | 0.532 |
-| bdd20k_ft_detr_r50         | 0.289 | 0.530 | 0.272 | 0.115 | 0.340 | 0.520 |
-| bdd20k_ft_yolof_r50                | 0.277 | 0.480 | 0.278 | 0.065 | 0.351 | 0.527 |
-| bdd20k_ft_yolox_s          | 0.278 | 0.490 | 0.266 | 0.070 | 0.330 | 0.525 |
-| bdd20k_ft_rtmdet_tiny              | 0.265 | 0.466 | 0.249 | 0.083 | 0.318 | 0.524 |
-| bdd20k_ft_dynamic_rcnn_r50         | 0.264 | 0.466 | 0.251 | 0.098 | 0.320 | 0.432 |
-| bdd20k_ft_retinanet_pvtt           | 0.253 | 0.465 | 0.232 | 0.086 | 0.309 | 0.439 |
-| bdd20k_ft_ssd300_vgg16      | 0.233 | 0.420 | 0.215 | 0.040 | 0.280 | 0.410 |
-| bdd20k_ft_retinanet_effb3          | 0.246 | 0.441 | 0.229 | 0.045 | 0.304 | 0.458 |
-| bdd20k_ft_freeanchor_r50           | 0.234 | 0.432 | 0.212 | 0.083 | 0.273 | 0.393 |
-| bdd20k_ft_mask_rcnn_swin_t         | 0.231 | 0.462 | 0.191 | 0.103 | 0.282 | 0.357 |
-| bdd20k_ft_efficientdet_d3          | 0.213 | 0.388 | 0.195 | 0.042 | 0.276 | 0.405 |
-| bdd20k_ft_reppoints_r50            | 0.208 | 0.397 | 0.185 | 0.074 | 0.250 | 0.353 |
-| bdd20k_ft_sparse_rcnn_r50    | 0.155 | 0.300 | 0.135 | 0.050 | 0.170 | 0.240 |
-| bdd20k_ft_yolov3_320         | 0.148 | 0.175 | 0.105 | 0.025 | 0.155 | 0.165 |
-| bdd20k_ft_centernet_r18_dcn  | 0.095 | 0.140 | 0.070 | 0.010 | 0.090 | 0.110 |
+## Other recorded revisions
 
+Earlier runs and alternate recipes remain available separately; they do not add architecture slots.
 
+| Run / config | AP | AP50 | AP75 | Status |
+| --- | ---: | ---: | ---: | --- |
+| [bdd10k_ft_efficientdet_d3](model_zoo/configs/bdd/bdd10k_ft_efficientdet_d3.py) | — | — | — | No detections |
+| [bdd10k_ft_reppoints_r50](model_zoo/configs/bdd/bdd10k_ft_reppoints_r50.py) | — | — | — | No detections |
+| [bdd10k_ft_reppoints_r50_v3](training/configs/bdd10k_ft_reppoints_r50_v3.py) | — | — | — | Training |
 
-*Numbers are on **BDD20K val**. Each checkpoint is COCO-pre-trained, then fine-tuned for with augmentation detailed in each config.*
-| model                             | dens\_bin\:dense | dens\_bin\:medium | dens\_bin\:sparse | infra\_bin\:few | infra\_bin\:none | infra\_bin\:rich | scene\:city street | scene\:highway | scene\:residential | timeofday\:dawn/dusk | timeofday\:daytime | timeofday\:night | vru\_bin\:few | vru\_bin\:many | vru\_bin\:none | weather\:clear | weather\:overcast | weather\:partly cloudy | weather\:rainy | weather\:snowy | average   |
-| --------------------------------- | ---------------- | ----------------- | ----------------- | --------------- | ---------------- | ---------------- | ------------------ | -------------- | ------------------ | -------------------- | ------------------ | ---------------- | ------------- | -------------- | -------------- | -------------- | ----------------- | ---------------------- | -------------- | -------------- | --------- |
-| bdd10k\_ft\_ddq\_detr4scale\_r50  | 0.364            | 0.362             | 0.412             | 0.361           | 0.497            | 0.344            | 0.314              | 0.350          | 0.356              | 0.357                | 0.480              | 0.299            | 0.346         | 0.365          | 0.301          | 0.344          | 0.400             | 0.353                  | 0.344          | 0.308          | **0.363** |
-| bdd10k\_ft\_dino\_swin\_l         | 0.340            | 0.333             | 0.432             | 0.352           | 0.495            | 0.349            | 0.328              | 0.297          | 0.369              | 0.366                | 0.357              | 0.316            | 0.332         | 0.360          | 0.279          | 0.341          | 0.389             | 0.341                  | 0.345          | 0.312          | **0.352** |
-| bdd20k\_ft\_tood\_r50             | 0.314            | 0.308             | 0.377             | 0.311           | 0.433            | 0.323            | 0.281              | 0.301          | 0.321              | 0.318                | 0.353              | 0.290            | 0.309         | 0.323          | 0.257          | 0.289          | 0.353             | 0.322                  | 0.334          | 0.285          | **0.320** |
-| bdd10k\_ft\_atss\_r50             | 0.312            | 0.288             | 0.365             | 0.310           | 0.452            | 0.317            | 0.284              | 0.278          | 0.305              | 0.329                | 0.351              | 0.296            | 0.298         | 0.318          | 0.253          | 0.322          | 0.353             | 0.321                  | 0.326          | 0.294          | **0.319** |
-| bdd10k\_ft\_varifocalnet\_r50     | 0.306            | 0.274             | 0.380             | 0.291           | 0.450            | 0.301            | 0.281              | 0.325          | 0.301              | 0.318                | 0.360              | 0.269            | 0.289         | 0.319          | 0.246          | 0.293          | 0.346             | 0.319                  | 0.307          | 0.267          | **0.312** |
-| bdd10k\_ft\_diffusiondet\_r50     | 0.315            | 0.284             | 0.313             | 0.311           | 0.383            | 0.318            | 0.277              | 0.356          | 0.305              | 0.302                | 0.356              | 0.269            | 0.293         | 0.309          | 0.254          | 0.291          | 0.368             | 0.308                  | 0.323          | 0.256          | **0.310** |
-| bdd10k\_ft\_frcnn\_r50\_fpn       | 0.308            | 0.275             | 0.332             | 0.288           | 0.414            | 0.313            | 0.265              | 0.333          | 0.288              | 0.297                | 0.334              | 0.284            | 0.284         | 0.302          | 0.242          | 0.314          | 0.341             | 0.299                  | 0.324          | 0.263          | **0.305** |
-| bdd20k\_ft\_tridentnet\_r50       | 0.285            | 0.286             | 0.308             | 0.290           | 0.364            | 0.296            | 0.268              | 0.313          | 0.288              | 0.296                | 0.324              | 0.254            | 0.284         | 0.293          | 0.236          | 0.288          | 0.316             | 0.299                  | 0.319          | 0.250          | **0.293** |
-| bdd10k\_ft\_retinanet\_r50        | 0.300            | 0.258             | 0.333             | 0.289           | 0.379            | 0.291            | 0.267              | 0.267          | 0.282              | 0.299                | 0.317              | 0.279            | 0.262         | 0.295          | 0.225          | 0.282          | 0.325             | 0.291                  | 0.316          | 0.274          | **0.292** |
-| bdd10k\_ft\_cascade\_rcnn\_r50    | 0.302            | 0.276             | 0.264             | 0.273           | 0.382            | 0.309            | 0.248              | 0.293          | 0.271              | 0.292                | 0.304              | 0.251            | 0.266         | 0.304          | 0.233          | 0.283          | 0.346             | 0.283                  | 0.317          | 0.250          | **0.287** |
-| bdd10k\_ft\_fcos\_r50             | 0.274            | 0.269             | 0.295             | 0.289           | 0.330            | 0.297            | 0.271              | 0.265          | 0.277              | 0.292                | 0.331              | 0.257            | 0.277         | 0.283          | 0.245          | 0.294          | 0.321             | 0.280                  | 0.296          | 0.252          | **0.285** |
-| bdd10k\_ft\_rtmdet\_tiny          | 0.251            | 0.263             | 0.301             | 0.281           | 0.306            | 0.274            | 0.234              | 0.240          | 0.281              | 0.268                | 0.293              | 0.248            | 0.258         | 0.280          | 0.228          | 0.268          | 0.308             | 0.272                  | 0.286          | 0.225          | **0.268** |
-| bdd10k\_ft\_dynamic\_rcnn\_r50    | 0.272            | 0.245             | 0.265             | 0.264           | 0.331            | 0.271            | 0.245              | 0.233          | 0.244              | 0.271                | 0.299              | 0.233            | 0.254         | 0.276          | 0.228          | 0.261          | 0.328             | 0.261                  | 0.285          | 0.234          | **0.265** |
-| bdd10k\_ft\_deformable\_detr\_r50 | 0.249            | 0.251             | 0.293             | 0.268           | 0.453            | 0.246            | 0.241              | 0.205          | 0.251              | 0.248                | 0.286              | 0.208            | 0.249         | 0.260          | 0.199          | 0.252          | 0.289             | 0.267                  | 0.270          | 0.241          | **0.261** |
-| bdd10k\_ft\_retinanet\_effb3      | 0.231            | 0.233             | 0.341             | 0.290           | 0.411            | 0.246            | 0.220              | 0.231          | 0.232              | 0.250                | 0.260              | 0.229            | 0.230         | 0.252          | 0.203          | 0.236          | 0.266             | 0.263                  | 0.280          | 0.217          | **0.256** |
-| bdd10k\_ft\_retinanet\_pvtt       | 0.236            | 0.249             | 0.217             | 0.251           | 0.322            | 0.269            | 0.231              | 0.224          | 0.249              | 0.263                | 0.272              | 0.241            | 0.237         | 0.268          | 0.210          | 0.246          | 0.284             | 0.268                  | 0.279          | 0.243          | **0.253** |
-| bdd10k\_ft\_freeanchor\_r50       | 0.241            | 0.232             | 0.269             | 0.250           | 0.269            | 0.244            | 0.216              | 0.236          | 0.227              | 0.259                | 0.259              | 0.212            | 0.227         | 0.245          | 0.206          | 0.231          | 0.275             | 0.255                  | 0.258          | 0.227          | **0.242** |
-| bdd10k\_ft\_mask\_rcnn\_swin\_t   | 0.244            | 0.225             | 0.258             | 0.240           | 0.238            | 0.279            | 0.219              | 0.246          | 0.229              | 0.244                | 0.254              | 0.218            | 0.221         | 0.247          | 0.195          | 0.231          | 0.288             | 0.238                  | 0.237          | 0.201          | **0.238** |
-| bdd10k\_ft\_yolof\_r50            | 0.183            | 0.195             | 0.285             | 0.242           | 0.318            | 0.187            | 0.179              | 0.193          | 0.195              | 0.198                | 0.196              | 0.189            | 0.195         | 0.199          | 0.179          | 0.197          | 0.243             | 0.222                  | 0.230          | 0.173          | **0.210** |
-| bdd10k\_ft\_sparse\_rcnn\_r50     | 0.099            | 0.090             | 0.210             | 0.119           | 0.273            | 0.092            | 0.085              | 0.097          | 0.112              | 0.116                | 0.145              | 0.085            | 0.096         | 0.094          | 0.064          | 0.095          | 0.120             | 0.123                  | 0.135          | 0.106          | **0.118** |
-| bdd10k_ft_yolov3_320     | 0.097 | 0.103 | 0.087 | 0.120 | 0.118 | 0.107 | 0.100 | 0.084 | 0.081 | 0.094 | 0.099 | 0.089 | 0.102 | 0.104 | 0.092 | 0.115 | 0.102 | 0.094 | 0.112 | 0.103 | **0.100** |
-| bdd10k_ft_centernet_r18_dcn| 0.087 | 0.093 | 0.078 | 0.108 | 0.106 | 0.096 | 0.090 | 0.076 | 0.073 | 0.085 | 0.089 | 0.080 | 0.092 | 0.094 | 0.083 | 0.104 | 0.092 | 0.085 | 0.101 | 0.093 | **0.090** |
-
-
-
-
-
-## 3. Quick Start
-
-```bash
-# Conda env (CUDA 11.x, PyTorch 1.13 +)
-conda create -n bdd10k-ft python=3.10 -y
-conda activate bdd10k-ft
-conda install pytorch torchvision cudatoolkit=11.8 -c pytorch -y
-
-# MMDetection + COCO API
-pip install mmcv-full mmdet
-pip install 'git+https://github.com/open-mmlab/cocoapi.git#subdirectory=pycocotools'
-
-# Clone & link dataset
-git clone https://github.com/<your-org>/bdd10k-ft.git
-ln -s /path/to/bdd100k <your-repo>/data/bdd100k
-````
-
-### Inference (single GPU)
-
-```bash
-python tools/test.py \
-    configs/bdd10k_ft_ddq_detr4scale_r50.py \
-    checkpoints/bdd10k_ft_ddq_detr4scale_r50.pth \
-    --show-dir vis/
-```
-
-### Re-training / Fine-tuning
-
-```bash
-./tools/dist_train.sh \
-    configs/bdd10k_ft_frcnn_r50_fpn.py 8
-```
-
-### Validation-set evaluation
-
-```bash
-python -m bdd100k.eval.run -t det \
-    -g data/bdd100k/labels/det_20/det_val.json \
-    -r work_dirs/<exp>/bbox.json
-```
-
----
-
-## 4. Visualization
-
-The repo includes a minimal Scalabel wrapper:
-
-```python
-from scalabel.vis.label import LabelViewer
-viewer = LabelViewer()
-viewer.draw(image, frame)      # draw GT or prediction frame
-viewer.save("demo_vis.jpg")
-```
-
-Rendered examples live under `assets/vis/`.
-
----
-
-## 5. Checkpoints & Configs
-
-| Model                | Config                                    | Weight                                                                                  | Log                                   |
-| -------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------- |
-| DDQ DeTR-4scale R-50 | `configs/bdd10k_ft_ddq_detr4scale_r50.py` |  |  |
-| …                    | …                                         | …                                                                                       | …                                     |
-
-*(All links are direct-download, MD5-verified.)*
-
----
-
-## 6. Citation
-For datasets used in the fintuning and scenario generation, these are the corresponding resources:
-```bibtex
-@inproceedings{yu2020bdd100k,
-  title={BDD100K: A diverse driving dataset for heterogeneous multitask learning},
-  author={Yu, Fisher and Chen, Haofeng and Wang, Xin and Xian, Wenqi and Chen, Yingying and Liu, Fangchen and Madhavan, Vashisht and Darrell, Trevor},
-  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
-  pages={2636--2645},
-  year={2020}
-}
-```
+Native model test scales; COCO bbox AP with maxDets=100. Predictions use a 300-box cap where supported. See [evaluation details](docs/evaluation.md) and [known issues](docs/known-issues.md).

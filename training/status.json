@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of_utc": "2026-09-20T16:32:04Z",
-  "scope": "The 20 fill-in/replacement fine-tuning jobs, not the complete detector pool or the entire 32-by-4 grid.",
+  "as_of_utc": "2026-09-20T17:06:30+00:00",
+  "scope": "20 completion-campaign jobs plus one numerical-repair candidate; full model collection in model_zoo/catalog.json.",
   "summary": {
     "formal_jobs": 20,
     "completed_log_no_nonfinite_loss": 18,
@@ -11,12 +11,11 @@
     "repair_candidates": 1
   },
   "evidence_policy": {
-    "source": "Read-only inspection of local training logs, completion markers, config files, checkpoint filenames, trainer processes, and annotation summaries.",
-    "completion": "TRAIN_DONE plus logged final-schedule checkpoint save and final validation. Mobility Deformable-DETR uses its preserved original completed run log.",
-    "loss_health": "Nonfinite loss reporting windows in the selected run log; this is not per-batch certification or tensor-level checkpoint validation.",
-    "steps": "Scheduled training iterations, not guaranteed successful optimizer updates. Completed schedules use final-save and validation evidence; live jobs use the last logged iteration.",
-    "accuracy": "No mAP values are published in this status snapshot.",
-    "privacy": "No images, per-image annotations, raw private logs, process identifiers, or local filesystem paths are included."
+    "source": "Configurations, run logs, checkpoint files, trainer state and annotation summaries.",
+    "completion": "Final-schedule checkpoint save and validation records.",
+    "loss_health": "Periodic logged loss values; per-batch checking is enabled for RepPoints v3.",
+    "steps": "Training-loop iterations.",
+    "accuracy": "See model_zoo/catalog.json for separate full-validation evaluations."
   },
   "domains": [
     {
@@ -254,7 +253,7 @@
       "config": "training/configs/mobility10k_ft_deformable_detr_r50.py",
       "validation_split": "cma_val",
       "notes": [
-        "Completion is supported by the preserved original run log; a later unintended repeat stopped in epoch 1 without replacing the completed checkpoints."
+        "Completed 24-epoch run."
       ]
     },
     {
@@ -388,9 +387,9 @@
       "domain": "waid",
       "formal_job": true,
       "status": "training",
-      "completed_steps": 124172,
+      "completed_steps": 131178,
       "total_steps": 241344,
-      "last_logged_steps": 124172,
+      "last_logged_steps": 131178,
       "configured_epochs": 24,
       "current_logged_epoch": null,
       "train_done": false,
@@ -424,7 +423,7 @@
       "config": "training/configs/bdd10k_ft_reppoints_r50_v2.py",
       "validation_split": "val",
       "notes": [
-        "Do not count as clean training. The v3 numerical-repair candidate is separate and is not yet accepted."
+        "Nonfinite classification losses; v3 replacement under evaluation."
       ]
     },
     {
@@ -537,11 +536,11 @@
       "domain": "bdd",
       "formal_job": false,
       "status": "training",
-      "completed_steps": 10900,
+      "completed_steps": 14400,
       "total_steps": 18000,
-      "last_logged_steps": 10900,
+      "last_logged_steps": 14400,
       "configured_epochs": 12,
-      "current_logged_epoch": 8,
+      "current_logged_epoch": 10,
       "train_done": false,
       "logged_nonfinite_loss_windows": 0,
       "final_schedule_save_logged": false,
@@ -552,7 +551,7 @@
       "config": "training/configs/bdd10k_ft_reppoints_r50_v3.py",
       "validation_split": "val",
       "notes": [
-        "Candidate replacement for BDD RepPoints v2, not a 21st formal job. Full finite-loss certification and final validation are pending; inherited double normalization remains unchanged."
+        "FP32 focal-loss replacement; final training and validation pending."
       ],
       "replaces": "bdd10k_ft_reppoints_r50_v2"
     }

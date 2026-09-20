@@ -16,7 +16,7 @@ external dependencies, not vendored here. Consult their respective upstream
 notices when installing or redistributing them. The small numerical adapter
 calls the existing focal-loss API; it does not include the CUDA kernel source.
 
-Dataset citations are retained on the domain pages and in the main README.
+Dataset citations are retained in [docs/datasets.md](docs/datasets.md).
 No images, annotations or pretrained/fine-tuned weights are distributed by this
 training update, and no right to redistribute those assets is asserted.
 
