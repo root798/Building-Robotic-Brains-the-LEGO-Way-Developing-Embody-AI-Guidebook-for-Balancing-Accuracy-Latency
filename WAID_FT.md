@@ -1,81 +1,63 @@
-#  WAID_FT: Fine-Tuned Object Detection Models for the Wildlife Aerial Images from Drone (WAID) Dataset
+# WAID model zoo
 
-> Historical model table: these values are not results of the current completion
-> campaign. See [current training status](docs/training-status.md) for the dated
-> run inventory and [reproduction](docs/reproduction.md) for published recipes.
+[All domains](README.md) · [CSV](model_zoo/results.csv) · [Protocol](docs/evaluation.md) · [Training](docs/training-status.md)
 
-## 1. Dataset
+Snapshot: 2026-09-20T17:04:05+00:00. AP values use a 0–100 scale.
 
-| Split        | Images | Annotation source | Notes                                |
-|--------------|-------:|-------------------|--------------------------------------|
-| **Train**    | 11.1 k | WAID              | Wildlife aerial images               |
-| **Val**      | 2.1 k  | WAID              | Used for all numbers in the table    |
-| **Test**     | 1.2 k  | WAID              | Used for all numbers in the table    |
+| Train images | Validation images | Classes | Architecture slots |
+| ---: | ---: | ---: | ---: |
+| 10,056 | 2,873 | 6 | 32 |
 
-| **Attribute**        | **Details**                                           |
-|----------------------|-------------------------------------------------------|
-| **Total Images**     | 14,375 UAV aerial images                             |
-| **Species (6)**      | Sheep, Cattle, Seals, Camels, Kiang, Zebras          |
-| **Habitats**         | Deserts, Grasslands, Sandy beaches                   |
-| **Conditions**       | Various weather, times of day, altitudes             |
-| **Annotation**       | Box-level labeling with species classification       |
-| **Focus**            | Small object detection in aerial imagery             |
-| **Source**           | https://github.com/xiaohuicui/WAID                   |
+Classes: `sheep`, `cattle`, `seal`, `camelus`, `kiang`, `zebra`.
 
-The WAID dataset is a large-scale, multi-class dataset specifically designed for wildlife detection in UAV aerial imagery. The dataset is particularly challenging for small object detection tasks, as wildlife subjects often appear as small targets in aerial images captured at various altitudes and environmental conditions.
+## Models
 
-## 2. Models Zoo (↑ = best)
-Below are fintuned model performance on WAID dataset:
+Each row links to its recipe. Evaluated checkpoint filenames and SHA-256 identities are in the [catalog](model_zoo/catalog.json). Weight downloads are not hosted in this repository.
 
-| Model | bbox_mAP | bbox_mAP_50 | bbox_mAP_75 | bbox_mAP_s | bbox_mAP_m | bbox_mAP_l |
-|:------|:--------:|:-----------:|:-----------:|:----------:|:----------:|:----------:|
-| waid_ft_ddq_detr4scale_r50 | **0.616** | **0.972** | **0.697** | **0.474** | 0.630 | **0.714** |
-| waid_ft_tood_r50 | 0.610 | 0.964 | 0.685 | 0.457 | **0.631** | 0.680 |
-| waid_ft_varifocalnet_r50 | 0.602 | 0.959 | 0.669 | 0.443 | 0.627 | 0.676 |
-| waid_ft_atss_r50 | 0.601 | 0.963 | 0.671 | 0.450 | 0.626 | 0.678 |
-| waid_ft_diffusiondet_r50_8xb2-50e_coco | 0.601 | 0.962 | 0.675 | 0.460 | 0.624 | 0.694 |
-| waid_ft_paa_r50 | 0.598 | 0.958 | 0.667 | 0.434 | 0.624 | 0.679 |
-| waid_ft_grid_rcnn_r50 | 0.596 | 0.950 | 0.676 | 0.452 | 0.616 | 0.698 |
-| waid_ft_dino_swin_l | 0.593 | 0.964 | 0.659 | 0.461 | 0.609 | 0.679 |
-| waid_cascade_rcnn_r50 | 0.590 | 0.949 | 0.664 | 0.441 | 0.609 | 0.683 |
-| waid_ft_retinanet_r50 | 0.586 | 0.946 | 0.650 | 0.423 | 0.620 | 0.685 |
-| waid_ft_nas_fcos_r50 | 0.586 | 0.957 | 0.646 | 0.441 | 0.610 | 0.682 |
-| waid_ft_frcnn_r50_fpn | 0.584 | 0.956 | 0.648 | 0.437 | 0.606 | 0.658 |
-| waid_ft_rtmdet_tiny | 0.583 | 0.938 | 0.645 | 0.403 | 0.611 | 0.680 |
-| waid_ft_deformable_detr_r50 | 0.581 | 0.966 | 0.628 | 0.439 | 0.601 | 0.670 |
-| waid_ft_tridentnet_r50 | 0.577 | 0.948 | 0.632 | 0.412 | 0.611 | 0.669 |
-| waid_ft_faster_rcnn | 0.574 | 0.951 | 0.628 | 0.423 | 0.600 | 0.635 |
-| waid_ft_fcos_r50 | 0.574 | 0.952 | 0.627 | 0.426 | 0.600 | 0.685 |
-| waid_ft_retinanet_effb3 | 0.565 | 0.928 | 0.622 | 0.368 | 0.605 | 0.672 |
-| waid_ft_retinanet_pvtt | 0.556 | 0.940 | 0.596 | 0.399 | 0.592 | 0.644 |
-| waid_ft_mask_rcnn_swin_t | 0.547 | 0.940 | 0.588 | 0.407 | 0.576 | 0.606 |
-| waid_ft_yolof_r50 | 0.537 | 0.905 | 0.577 | 0.334 | 0.611 | 0.679 |
-| waid_ft_conditional_detr_r50 | 0.494 | 0.894 | 0.490 | 0.304 | 0.560 | 0.647 |
-| waid_ft_detr_r50 | 0.455 | 0.850 | 0.440 | 0.239 | 0.531 | 0.620 |
-| waid_ft_dynamic_rcnn_r50 | 0.402 | 0.694 | 0.425 | 0.275 | 0.447 | 0.355 |
-| waid_sparse_rcnn_r50 | 0.257 | 0.497 | 0.245 | 0.125 | 0.310 | 0.276 |
-| waid_ft_yolov3_d53_320 | 0.244 | 0.603 | 0.142 | 0.107 | 0.297 | 0.401 |
-| waid_ft_efficientdet_d3 | 0.173 | 0.303 | 0.184 | 0.094 | 0.218 | 0.196 |
-| waid_ft_freeanchor_r50_smallobj_fp32   |      0.135 |         0.293 |         0.101 |        0.116 |        0.152 |        0.183 |
-| waid_ft_centernet_r18_dcn | 0.111 | 0.284 | 0.066 | 0.044 | 0.147 | 0.154 |
-| waid_ft_reppoints_r50 | 0.014 | 0.041 | 0.006 | 0.006 | 0.026 | 0.000 |
+| Model | AP | AP50 | AP75 | Status |
+| --- | ---: | ---: | ---: | --- |
+| [ATSS R50](model_zoo/configs/waid/waid_ft_atss_r50.py) | 60.01 | 96.26 | 67.16 | Evaluated |
+| [Cascade R-CNN R50](model_zoo/configs/waid/waid10k_cascade_rcnn_r50.py) | 59.23 | 95.10 | 66.43 | Evaluated |
+| [CenterNet R18-DCN](model_zoo/configs/waid/waid10k_ft_centernet_r18_dcn.py) | 11.08 | 28.35 | 6.60 | Evaluated |
+| [Conditional DETR R50](model_zoo/configs/waid/waid20k_ft_conditional_detr_r50.py) | 49.40 | 89.37 | 49.04 | Evaluated |
+| [DDQ-DETR R50](model_zoo/configs/waid/waid10k_ft_ddq_detr4scale_r50.py) | 61.82 | 97.16 | 69.94 | Evaluated |
+| [Deformable DETR R50](model_zoo/configs/waid/waid10k_ft_deformable_detr_r50.py) | 58.10 | 96.57 | 62.48 | Evaluated |
+| [Deformable DETR Refine R50](model_zoo/configs/waid/waid10k_ft_deformable_detr_refine_r50.py) | 57.68 | 95.26 | 62.97 | Evaluated |
+| [DETR R50](model_zoo/configs/waid/waid20k_ft_detr_r50.py) | 45.46 | 85.00 | 44.04 | Evaluated |
+| [DiffusionDet R50](model_zoo/configs/waid/waid10k_ft_diffusiondet_r50_8xb2-50e_coco.py) | 59.91 | 96.05 | 66.89 | Evaluated |
+| [DINO Swin-L](model_zoo/configs/waid/waid10k_ft_dino_swin_l.py) | 59.01 | 96.23 | 65.69 | Evaluated |
+| [Dynamic R-CNN R50](model_zoo/configs/waid/waid10k_ft_dynamic_rcnn_r50.py) | 40.56 | 70.18 | 42.67 | Evaluated |
+| [EfficientDet-D3](model_zoo/configs/waid/waid10k_ft_efficientdet_d3.py) | 15.68 | 27.98 | 16.17 | Evaluated |
+| [FCOS R50](model_zoo/configs/waid/waid10k_ft_fcos_r50.py) | 57.40 | 95.18 | 62.08 | Evaluated |
+| [Faster R-CNN R50-FPN](model_zoo/configs/waid/waid10k_ft_frcnn_r50_fpn.py) | 58.52 | 95.87 | 64.83 | Evaluated |
+| [FreeAnchor R50 v2](model_zoo/configs/waid/waid10k_ft_freeanchor_r50_v2.py) | 32.18 | 57.13 | 32.87 | Evaluated |
+| [Grid R-CNN R50](model_zoo/configs/waid/waid20k_ft_grid_rcnn_r50.py) | 59.62 | 94.90 | 67.65 | Evaluated |
+| [Mask R-CNN Swin-T](model_zoo/configs/waid/waid10k_ft_mask_rcnn_swin_t.py) | 54.91 | 94.43 | 58.90 | Evaluated |
+| [NAS-FCOS R50](model_zoo/configs/waid/waid20k_ft_nas_fcos_r50.py) | 58.58 | 95.67 | 64.55 | Evaluated |
+| [PAA R50](model_zoo/configs/waid/waid20k_ft_paa_r50.py) | 59.79 | 95.82 | 66.71 | Evaluated |
+| [RepPoints R50 v2](model_zoo/configs/waid/waid10k_ft_reppoints_r50_v2.py) | 30.00 | 60.19 | 26.28 | Evaluated |
+| [RetinaNet EfficientNet-B3](model_zoo/configs/waid/waid10k_ft_retinanet_effb3.py) | 56.38 | 92.58 | 62.14 | Evaluated |
+| [RetinaNet PVT-T](model_zoo/configs/waid/waid10k_ft_retinanet_pvtt.py) | 55.54 | 93.93 | 59.28 | Evaluated |
+| [RetinaNet R50](model_zoo/configs/waid/waid10k_ft_retinanet_r50.py) | 58.61 | 94.66 | 65.05 | Evaluated |
+| [RTMDet-Tiny](model_zoo/configs/waid/waid10k_ft_rtmdet_tiny.py) | 58.34 | 93.75 | 64.47 | Evaluated |
+| [Sparse R-CNN R50](model_zoo/configs/waid/waid10k_sparse_rcnn_r50.py) | 25.71 | 49.77 | 24.43 | Evaluated |
+| [SSD300](model_zoo/configs/waid/waid10k_ft_ssd300.py) | 4.92 | 23.06 | 0.52 | Evaluated |
+| [TOOD R50](model_zoo/configs/waid/waid20k_ft_tood_r50.py) | 61.10 | 96.42 | 68.62 | Evaluated |
+| [TridentNet R50](model_zoo/configs/waid/waid20k_ft_tridentnet_r50.py) | 57.78 | 95.07 | 63.15 | Evaluated |
+| [VarifocalNet R50](model_zoo/configs/waid/waid10k_ft_varifocalnet_r50.py) | 60.23 | 95.87 | 66.95 | Evaluated |
+| [ViTDet-B](training/configs/waid10k_ft_vitdet_b.py) | — | — | — | Training |
+| [YOLOF R50](model_zoo/configs/waid/waid10k_ft_yolof_r50.py) | 53.69 | 90.49 | 57.57 | Evaluated |
+| [YOLOv3 Darknet-53 (320)](model_zoo/configs/waid/waid10k_ft_yolov3_d53_320.py) | 24.68 | 61.03 | 14.41 | Evaluated |
 
+## Other recorded revisions
 
-**Note**: Bold values indicate the best performance in each metric category among WAID models.
+Earlier runs and alternate recipes remain available separately; they do not add architecture slots.
 
-## 3. Citation
-For dataset used in the fintuning and scenario generation, below is the corresponding resource:
+| Run / config | AP | AP50 | AP75 | Status |
+| --- | ---: | ---: | ---: | --- |
+| [waid10k_ft_faster_rcnn](model_zoo/configs/waid/waid10k_ft_faster_rcnn.py) | 57.53 | 95.36 | 62.77 | Evaluated |
+| [waid10k_ft_freeanchor_r50](model_zoo/configs/waid/waid10k_ft_freeanchor_r50.py) | 0.00 | 0.00 | 0.00 | Evaluated |
+| [waid10k_ft_freeanchor_r50_smallobj_fp32](model_zoo/configs/waid/waid10k_ft_freeanchor_r50_smallobj_fp32.py) | 14.31 | 31.18 | 10.75 | Evaluated |
+| [waid10k_ft_reppoints_r50](model_zoo/configs/waid/waid10k_ft_reppoints_r50.py) | 1.49 | 4.31 | 0.65 | Evaluated |
 
-```bibtex
-@article{mou2023waid,
-  title={WAID: A Large-Scale Dataset for Wildlife Detection with Drones},
-  author={Mou, Chao and Liu, Tengfei and Zhu, Chengcheng and Cui, Xiaohui},
-  journal={Applied Sciences},
-  volume={13},
-  number={18},
-  pages={10397},
-  year={2023},
-  publisher={MDPI},
-  doi={10.3390/app131810397}
-}
-```
+Native model test scales; COCO bbox AP with maxDets=100. Predictions use a 300-box cap where supported. See [evaluation details](docs/evaluation.md) and [known issues](docs/known-issues.md).

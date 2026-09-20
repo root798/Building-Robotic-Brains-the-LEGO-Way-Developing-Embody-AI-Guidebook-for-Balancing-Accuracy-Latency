@@ -10,9 +10,9 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-NEW_TREES = ('training', 'docs', 'tools', 'tests', '.github', 'licenses')
+NEW_TREES = ('training', 'docs', 'tools', 'tests', '.github', 'licenses', 'model_zoo', 'evaluation')
 PUBLIC_ROOT_FILES = ('README.md', 'Mobility.md', 'CONTRIBUTING.md',
-                     'THIRD_PARTY_NOTICES.md', '.gitignore')
+                     'THIRD_PARTY_NOTICES.md', '.gitignore', 'BDD20K_FT.md', 'SeaDronesSee.md', 'WAID_FT.md')
 
 
 def publication_files():

@@ -27,5 +27,7 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_publication.py'
       - name: Validate fresh-run entry point without ML dependencies
         run: python -m unittest discover -s tests -p 'test_train_cli.py'
+      - name: Validate model zoo, metrics and evaluation protocol
+        run: python -m unittest discover -s tests -p 'test_model_zoo.py'
       - name: Whitespace check
         run: git diff --check HEAD^ HEAD

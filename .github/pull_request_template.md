@@ -1,16 +1,12 @@
 ## Summary
 
-What changed, and which model/domain or guide section does it affect?
+Describe the model, result, code, or documentation update.
 
-## Evidence
+## Validation
 
-- [ ] Publication and configuration tests pass.
-- [ ] CPU/CUDA/full-training checks are reported separately.
-- [ ] Incomplete or unhealthy runs are not called successful.
-- [ ] Result updates identify the configuration, checkpoint and split.
-- [ ] No private paths, credentials, data or weights are included.
-- [ ] Upstream attribution and historical evidence are preserved.
+- [ ] Relevant tests pass.
+- [ ] Result changes identify the configuration, checkpoint, split, and protocol.
+- [ ] Files contain no private data or credentials.
+- [ ] Upstream attribution is preserved.
 
-## Remaining limitations
-
-List any checks not run and claims that this change does not establish.
+Note any pending checks or recipe-specific issues.
